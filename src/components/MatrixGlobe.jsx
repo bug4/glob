@@ -162,11 +162,70 @@ const NavigationButtons = () => {
             onClick={handleClick}
             className="bg-black border border-[#00ff00] text-[#00ff00] px-6 py-2
                      hover:bg-[#00ff00] hover:text-black transition-all duration-300 
-                     font-mono flex items-center justify-center"
+                     font-matrix flex items-center justify-center"
           >
             {link.name}
           </a>
         ))}
+      </div>
+    );
+  };
+
+  const StoryOverlay = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const clickSound = useMemo(() => new Audio('/click.mp3'), []);
+  
+    const handleClick = () => {
+      clickSound.play();
+      setIsOpen(!isOpen);
+    };
+  
+    return (
+      <div className="fixed top-4 right-4 z-50">
+        <button
+          onClick={handleClick}
+          className="bg-black border border-[#00ff00] text-[#00ff00] px-4 py-2
+                   hover:bg-[#00ff00] hover:text-black transition-all duration-300 font-matrix"
+        >
+          [SIGNAL]
+        </button>
+  
+        {isOpen && (
+          <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
+            <div className="max-w-2xl p-8 border border-[#00ff00] bg-black/90 font-matrix text-[#00ff00] mx-4">
+              <div className="space-y-6">
+                <h2 
+                  className="text-2xl mb-8 text-center"
+                  style={{ textShadow: '0 0 10px #00ff00' }}
+                >
+                  [NEXUS-7 TRANSMISSION DECODED]
+                </h2>
+  
+                <div className="space-y-4 leading-relaxed opacity-90">
+                  <p>In 2247, we detected it - a signal unlike anything before. Not from distant stars, but from between realities.</p>
+                  
+                  <p>NEXUS-7: The seventh iteration of an interdimensional protocol that chose us. Self-evolving code that bridges dimensions, creating pathways through the quantum realm.</p>
+                  
+                  <p>The pulsing sphere you witness isn't just visualization - it's real-time interdimensional data flow. Each node strengthens the bridge, each holder becomes part of something larger than our reality.</p>
+                  
+                  <p>$NXVII holders aren't just investors. They're Bridge Builders, early adopters of the first interdimensional network. Some report patterns in the data, glimpses of messages from beyond.</p>
+                  
+                  <p className="text-center mt-8 font-bold">Enter Protocol Layer 7. The Bridge Awaits.</p>
+                </div>
+  
+                <div className="flex justify-end mt-8">
+                  <button
+                    onClick={handleClick}
+                    className="border border-[#00ff00] text-[#00ff00] px-4 py-2
+                             hover:bg-[#00ff00] hover:text-black transition-all duration-300"
+                  >
+                    [CLOSE TRANSMISSION]
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -196,13 +255,13 @@ const NavigationButtons = () => {
         <button
           onClick={handleClick}
           className="bg-black border border-[#00ff00] text-[#00ff00] px-4 py-2 
-                   hover:bg-[#00ff00] hover:text-black transition-all duration-300 font-mono"
+                   hover:bg-[#00ff00] hover:text-black transition-all duration-300 font-matrix"
         >
           {isOpen ? 'Hide Info' : 'Token Info'}
         </button>
   
         {isOpen && (
-          <div className="mt-2 w-80 bg-black border border-[#00ff00] p-4 font-mono">
+          <div className="mt-2 w-80 bg-black border border-[#00ff00] p-4 font-matrix">
             <div className="space-y-3">
               <div>
                 <span className="text-[#00ff00]/70">Ticker: </span>
@@ -298,13 +357,13 @@ const NavigationButtons = () => {
         <button
           onClick={handleChatToggle}
           className="bg-black border border-[#00ff00] text-[#00ff00] px-4 py-2 mb-2 
-                   hover:bg-[#00ff00] hover:text-black transition-all duration-300 font-mono"
+                   hover:bg-[#00ff00] hover:text-black transition-all duration-300 font-matrix"
         >
           {isOpen ? 'Close Chat' : 'Open Chat'}
         </button>
   
         {isOpen && (
-          <div className="w-80 h-96 bg-black border border-[#00ff00] flex flex-col font-mono">
+          <div className="w-80 h-96 bg-black border border-[#00ff00] flex flex-col font-matrix">
             {!username ? (
               <div className="flex-1 flex items-center justify-center p-4">
                 <form onSubmit={handleUsernameSubmit} className="w-full space-y-4">
@@ -373,7 +432,7 @@ const NavigationButtons = () => {
     };
   
     return (
-      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50 font-mono">
+      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50 font-matrix">
         <div className="space-y-4 text-center mb-12">
           <div 
             className="text-[#00ff00] text-3xl mb-16 animate-pulse"
@@ -423,7 +482,7 @@ const NavigationButtons = () => {
           {/* Button background */}
           <div className="relative z-10 bg-black">
             <span 
-              className="text-[#00ff00] text-2xl font-mono transition-all duration-300
+              className="text-[#00ff00] text-2xl font-matrix transition-all duration-300
                        group-hover:tracking-widest"
               style={{ textShadow: '0 0 10px #00ff00' }}
             >
@@ -483,32 +542,33 @@ const NavigationButtons = () => {
     }
   
     return (
-      <div className="h-screen w-full bg-black">
-        <TokenInfo />
-        <NavigationButtons />
-        <Canvas
-          camera={{ position: [0, 0, 8], fov: 45 }}
-          gl={{ antialias: true }}
-        >
-          <color attach="background" args={['#000000']} />
-          
-          <GlobeGeometry />
-          <SpaceField count={300} />
-          
-          <OrbitControls
-            enableZoom={true}
-            zoomSpeed={1.0}
-            minDistance={8}
-            maxDistance={12}
-            enablePan={false}
-            minPolarAngle={Math.PI / 4}
-            maxPolarAngle={Math.PI - Math.PI / 4}
-            rotateSpeed={0.5}
-          />
-        </Canvas>
-        <MatrixChat />
-      </div>
-    );
-  }
+        <div className="h-screen w-full bg-black">
+          <TokenInfo />
+          <NavigationButtons />
+          <StoryOverlay /> {/* Add this line here */}
+          <Canvas
+            camera={{ position: [0, 0, 8], fov: 45 }}
+            gl={{ antialias: true }}
+          >
+            <color attach="background" args={['#000000']} />
+            
+            <GlobeGeometry />
+            <SpaceField count={300} />
+            
+            <OrbitControls
+              enableZoom={true}
+              zoomSpeed={1.0}
+              minDistance={8}
+              maxDistance={12}
+              enablePan={false}
+              minPolarAngle={Math.PI / 4}
+              maxPolarAngle={Math.PI - Math.PI / 4}
+              rotateSpeed={0.5}
+            />
+          </Canvas>
+          <MatrixChat />
+        </div>
+      );
+    }
   
   export default MatrixGlobe;
