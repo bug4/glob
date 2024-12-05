@@ -143,7 +143,7 @@ const NavigationButtons = () => {
   
     const links = [
       { name: 'PUMP.FUN', url: 'https://pump.fun' },
-      { name: 'TELEGRAM', url: 'https://t.me/' },
+      { name: 'TELEGRAM', url: 'https://t.me/NexusLayer7' },
       { name: 'X', url: 'https://x.com/NexusLayer7' },
     ];
   
@@ -236,6 +236,7 @@ const NavigationButtons = () => {
   
     const tokenData = {
       ticker: "NXVII",
+      platform: "pump.fun",
       deployed: "2024-12-05",
       ca: "TBA"
     };
@@ -467,7 +468,7 @@ const NavigationButtons = () => {
             className="text-[#00ff00] text-xl mt-16"
             style={{ textShadow: '0 0 5px #00ff00' }}
           >
-            /system: Matrix.Globe.initialize
+            /system: Nexus-7.Protocol.initialize
           </div>
         </div>
   
