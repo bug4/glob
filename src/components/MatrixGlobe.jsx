@@ -142,7 +142,7 @@ const NavigationButtons = () => {
     const clickSound = useMemo(() => new Audio('/click.mp3'), []);
   
     const links = [
-      { name: 'PUMP.FUN', url: 'https://pump.fun' },
+      { name: 'PUMP.FUN', url: 'https://pump.fun/coin/6pdA8UXmqVysWLkdyoBtDsfUBCAHjW5DrFeSafU2pump' },
       { name: 'TELEGRAM', url: 'https://t.me/NexusLayer7' },
       { name: 'X', url: 'https://x.com/NexusLayer7' },
     ];
@@ -238,7 +238,7 @@ const NavigationButtons = () => {
       ticker: "NXVII",
       platform: "pump.fun",
       deployed: "2024-12-05",
-      ca: "TBA"
+      ca: "6pdA8UXmqVysWLkdyoBtDsfUBCAHjW5DrFeSafU2pump"
     };
   
     const handleClick = () => {
