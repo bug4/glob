@@ -144,7 +144,7 @@ const NavigationButtons = () => {
     const links = [
       { name: 'PUMP.FUN', url: 'https://pump.fun' },
       { name: 'TELEGRAM', url: 'https://t.me/' },
-      { name: 'X', url: 'https://twitter.com/' },
+      { name: 'X', url: 'https://x.com/NexusLayer7' },
     ];
   
     const handleClick = () => {
@@ -235,8 +235,8 @@ const NavigationButtons = () => {
     const clickSound = useMemo(() => new Audio('/click.mp3'), []);
   
     const tokenData = {
-      ticker: "N/A",
-      deployed: "2024-12-04",
+      ticker: "NXVII",
+      deployed: "2024-12-05",
       ca: "TBA"
     };
   
